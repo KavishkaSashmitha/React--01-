@@ -1,0 +1,126 @@
+Great! To truly understand React Hooks, the best way is to build something practical. 
+Here’s a progressive challenge that will make you master each Hook step by step.
+
+🚀 React Hooks Mastery Challenge
+
+🏆 Final Goal: Build a Task Manager App with Hooks
+
+You’ll create a Task Manager where users can add, edit, delete, filter, and persist tasks.
+
+Hooks you’ll use:
+✅ useState → Manage tasks
+✅ useEffect → Store tasks in local storage
+✅ useContext → Create a theme switcher
+✅ useReducer → Manage complex task operations
+
+📝 Step-by-Step Challenges
+
+🔹 Challenge 1: Master useState – Create a Task List
+
+✅ Goal: Build a simple task list where users can add and remove tasks.
+
+Steps:
+	1.	Create a React app with Vite or Create React App.->done
+	2.	Use useState to store an array of tasks.->done
+	3.	Add an input field to enter a new task.->done
+	4.	Add a button to add tasks to the list.->done
+	5.	Display all tasks in a list.
+	6.	Add a “Delete” button next to each task to remove it.
+
+Hints:
+	•	Use useState([]) for tasks.
+	•	Use setTasks([...tasks, newTask]) to add a task.
+	•	Use setTasks(tasks.filter(task => task.id !== id)) to delete a task.
+
+🔹 Bonus: Add a checkbox to mark tasks as completed.
+
+🔹 Challenge 2: Master useEffect – Save Tasks in Local Storage
+
+✅ Goal: Save tasks in localStorage so they persist after refreshing.
+
+Steps:
+	1.	Use useEffect to load tasks from localStorage when the app starts.
+	2.	Save tasks in localStorage every time they change.
+
+Hints:
+	•	localStorage.setItem("tasks", JSON.stringify(tasks))
+	•	const storedTasks = JSON.parse(localStorage.getItem("tasks")) || []
+	•	Use useEffect(() => {...}, [tasks]) to save tasks on every update.
+
+🔹 Bonus: Show a message like “All tasks saved!” when saving.
+
+🔹 Challenge 3: Master useContext – Add a Dark/Light Theme
+
+✅ Goal: Allow users to toggle between dark and light modes.
+
+Steps:
+	1.	Create a ThemeContext.
+	2.	Use useContext in components to access the theme.
+	3.	Add a toggle button to switch between themes.
+
+Hints:
+	•	const ThemeContext = createContext("light")
+	•	useContext(ThemeContext) to access the theme.
+	•	Store theme in localStorage so it persists.
+
+🔹 Bonus: Change the background color based on the theme.
+
+🔹 Challenge 4: Master useReducer – Implement Task Filters & Edits
+
+✅ Goal: Improve state management using useReducer instead of useState.
+
+Steps:
+	1.	Convert useState tasks into useReducer.
+	2.	Create actions: ADD_TASK, REMOVE_TASK, TOGGLE_TASK, EDIT_TASK.
+	3.	Implement an edit button next to each task.
+	4.	Implement a filter to show:
+	•	✅ Completed Tasks
+	•	❌ Incomplete Tasks
+	•	🔄 All Tasks
+
+Hints:
+	•	Create a reducer function like this:
+
+function taskReducer(state, action) {
+  switch (action.type) {
+    case "ADD_TASK":
+      return [...state, action.payload];
+    case "REMOVE_TASK":
+      return state.filter(task => task.id !== action.payload);
+    case "TOGGLE_TASK":
+      return state.map(task =>
+        task.id === action.payload ? { ...task, completed: !task.completed } : task
+      );
+    case "EDIT_TASK":
+      return state.map(task =>
+        task.id === action.payload.id ? { ...task, text: action.payload.text } : task
+      );
+    default:
+      return state;
+  }
+}
+
+
+	•	Use const [tasks, dispatch] = useReducer(taskReducer, initialTasks);
+
+🔹 Bonus: Add animations when adding or removing tasks.
+
+🔹 Final Challenge: Bring Everything Together! 🎯
+
+✅ Goal: Make your Task Manager App fully functional.
+
+Features to Implement:
+
+✅ Add and remove tasks using useState or useReducer.
+✅ Save tasks in local storage using useEffect.
+✅ Add a dark mode toggle using useContext.
+✅ Implement filters and edits using useReducer.
+
+🚀 Extra Challenge (For Experts!)
+
+✅ Integrate a Backend: Use Firebase or an Express.js API to store tasks online.
+✅ Use Custom Hooks: Create a useLocalStorage Hook to handle local storage logic.
+
+🔥 Ready to Take the Challenge?
+
+Let me know which step you’re working on, and I’ll guide you through it! 💪🎯
